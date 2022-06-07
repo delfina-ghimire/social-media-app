@@ -3,5 +3,6 @@
     flex-direction: column;
     gap: 1.6rem;
     align-items: center;
-    overflow: auto;
+    overflow: auto; 
 }
+
