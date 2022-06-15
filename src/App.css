@@ -14,3 +14,21 @@
  filter: blur(72px);
 }
 
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  background: var(--buttonBg);
+  transition: all 1s ease;
+}
+
+.btn:hover{
+  cursor: pointer;
+  color: var(--blue);
+  background: transparent;
+  border: 2px solid var(--blue);
+}
+

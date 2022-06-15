@@ -1,0 +1,43 @@
+ .followersCard{
+    width: 100%;
+    border-radius: 1.1rem;
+    gap: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;   
+ }
+
+ .followersCard__follower{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+ .follower__container{
+    display: flex;
+    gap: 1rem;
+ }
+
+ .follower__img{
+    width: 5.3rem;
+    height: 5.3rem;
+    border-radius: 50%;
+ }
+
+ .follower__details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+ }
+
+ .follower__name{
+    font-weight: bold;
+ }
+
+ .btn--follow{
+    height: 3.2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+ }
+
