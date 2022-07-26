@@ -1,0 +1,73 @@
+.PostNav{
+    display: flex;
+    gap: 1rem;
+    background-color: (--cardColor);
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+
+}
+
+.PostNav>img{
+    border-radius: 50%;
+    width: 4.8rem;
+    height: 4.8rem;
+}
+
+.postNav__container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 1.6rem;
+}
+
+.postInput__input{
+    background-color: var(--inputColor);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.6rem;
+    border: none;
+    outline: none;
+}
+
+.postOptions{
+    display: flex;
+    justify-content: space-around;   
+}
+
+.postOptions__option{
+    padding: 5px 15px 15px 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.postOptions__option:hover{
+    cursor: pointer;
+}
+
+.btn--postShare{
+     height: 3.2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+.previewImg__container{
+    position: relative;
+}
+
+.previewImg__icon{
+    position: absolute;
+    right: 1.6rem;
+    top: 0.8rem;
+    cursor: pointer;
+}
+
+.previewImg{
+    width: 100%;
+    max-height: 32rem;
+    object-fit: cover;
+    border-radius: 0.8rem;
+}
