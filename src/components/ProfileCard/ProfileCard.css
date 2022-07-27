@@ -6,7 +6,7 @@
     gap: 1rem;
     overflow-x: clip;
     background: var(--cardColor); 
-      
+    padding-bottom: 1.6rem;      
 }
 
 .profileImgs{
@@ -79,9 +79,9 @@
     size: 1.3rem;
 }
 
-.verticleLine{
-    height: 150%;
-    border-left: 2px solid var(--hrColor);
+.vl{
+    height: 50px;
+     border-left: 2px solid var(--hrColor);
 }
 
 .profileCard > span{

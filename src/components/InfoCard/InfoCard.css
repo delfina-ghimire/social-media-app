@@ -1,0 +1,29 @@
+.infoCard{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--cardColor);
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+    width: 90%;
+}
+
+.infoCard__head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoCard__icon:hover{
+cursor: pointer;
+}
+
+.btn--logout{
+    padding: 1.5rem;
+    width: 11.2rem;
+    height: 3.2rem;
+    margin-top: 9.6rem;
+    align-self: flex-end;
+    font-size: 1.6rem;
+
+}

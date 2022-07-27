@@ -1,0 +1,16 @@
+.rightSide{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.rightSide__nav{
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.rightSide__nav>img{
+    width: 2.4rem;
+    height: 2.4rem;
+}

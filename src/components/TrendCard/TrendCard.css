@@ -1,0 +1,30 @@
+.trendCard{
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    background-color: var(--cardColor);
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+    padding-left: 3.2rem;
+}
+
+.trend{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.trend__name{
+    font-weight: bold;
+}
+
+.trend__shares{
+    font-size: 13px;
+}
+
+.btn--info{
+    font-size: 14px;
+    height: 4.8rem;
+    width: 80%;
+    align-self: center;
+}
