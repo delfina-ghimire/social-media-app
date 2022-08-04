@@ -31,3 +31,29 @@ export const registerUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+//Login User
+
+export const loginUser = async(req, res) => {
+    const {username, password} = req.body
+    try{
+        const user = await UserModel.findOne({username:username})
+        //It will find the user with that particular username that comes from the http request, in our userModel
+        // If it exist in our database then it will be returned to const user
+
+
+        //if user exists then
+        if(user){
+            //validate password
+            const validity = await bcrypt.compare(password, user.password);
+
+            validity? res.status(200).json(user): res.status(400).json("Wrong Password")
+
+        }
+        else{
+            res.status(404).json("User doesn't exists")
+        }
+    }catch(error){
+         res.status(500).json({ message: error.message });
+    }
+}
