@@ -70,3 +70,64 @@ export const deleteUser = async (req, res) => {
     res.status(403).json('Access denied! You can only delete your own profile');
   }
 };
+
+
+//Follow a user
+
+export const followUser = async(req, res) => {
+  const id = req.params.id; //who is supposed to be followed
+
+  //destructure the currentUserId who wants to follow another user
+
+  const{currentUserId} = req.body; //user who wants to follow
+//because the user can't follow themselves
+  if(currentUserId === id){
+    res.status(403).json("Action Forbidden")
+  }
+  else{
+    try {
+      const followUser = await UserModel.findById(id); // user who we want to follow
+       const followingUser = await UserModel.findById(currentUserId);
+
+      //If the user is not already being followed
+      if(!followUser.followers.includes(currentUserId)){
+        await followUser.updateOne({$push: {followers:currentUserId}});
+        await followingUser.updateOne({$push: {following: id}})
+        res.status(200).json("Profile Followed!")
+      } else{
+        res.status(403).json("You already follow this Profile")
+      }
+      
+    } catch (error) {
+      res.status(500).json(error);
+      
+    }
+  }
+}
+
+
+//UnFollow a user
+
+export const UnfollowUser = async(req, res) => {
+  const id = req.params.id;
+  const{currentUserId} = req.body; 
+  if(currentUserId === id){
+    res.status(403).json("Action Forbidden")
+  }
+  else{
+    try {
+      const followUser = await UserModel.findById(id); 
+       const followingUser = await UserModel.findById(currentUserId);
+      if(followUser.followers.includes(currentUserId)){
+        await followUser.updateOne({$pull: {followers:currentUserId}});
+        await followingUser.updateOne({$pull: {following: id}})
+        res.status(200).json("Profile UnFollowed!")
+      } else{
+        res.status(403).json("You Now Unfollow this Profile")
+      }
+      
+    } catch (error) {
+      res.status(500).json(error);     
+    }
+  }
+}
