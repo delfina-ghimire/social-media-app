@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import UserModel from '../Models/userModel.js';
 
 //New user registration
@@ -26,8 +27,16 @@ export const registerUser = async (req, res) => {
         .status(400)
         .json({ message: 'usename is already registered!' });
     }
-    await newUser.save();
-    res.status(200).json(newUser);
+    const user = await newUser.save();
+    const token = jwt.sign(
+      {
+        username: user.username,
+        id: user._id,
+      },
+      process.env.JWT_KEY,
+      { expiresIn: '1h' }
+    );
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -35,26 +44,35 @@ export const registerUser = async (req, res) => {
 
 //Login User
 
-export const loginUser = async(req, res) => {
-    const {username, password} = req.body
-    try{
-        const user = await UserModel.findOne({username:username})
-        //It will find the user with that particular username that comes from the http request, in our userModel
-        // If it exist in our database then it will be returned to const user
+export const loginUser = async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await UserModel.findOne({ username: username });
+    //It will find the user with that particular username that comes from the http request, in our userModel
+    // If it exist in our database then it will be returned to const user
 
+    //if user exists then
+    if (user) {
+      //validate password
+      const validity = await bcrypt.compare(password, user.password);
 
-        //if user exists then
-        if(user){
-            //validate password
-            const validity = await bcrypt.compare(password, user.password);
-
-            validity? res.status(200).json(user): res.status(400).json("Wrong Password")
-
-        }
-        else{
-            res.status(404).json("User doesn't exists")
-        }
-    }catch(error){
-         res.status(500).json({ message: error.message });
+      if (!validity) {
+        res.status(400).json('Incorrect Password');
+      } else {
+        const token = jwt.sign(
+          {
+            username: user.username,
+            id: user._id,
+          },
+          process.env.JWT_KEY,
+          { expiresIn: '1h' }
+        );
+        res.status(200).json({ user, token });
+      }
+    } else {
+      res.status(404).json("User doesn't exists");
     }
-}
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
