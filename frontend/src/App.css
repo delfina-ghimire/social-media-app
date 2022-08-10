@@ -32,6 +32,11 @@
   border: 2px solid var(--blue);
 }
 
+.btn:disabled{
+  background: silver;
+  pointer-events: none;
+}
+
 ::-webkit-scrollbar{
   display: none;
 }

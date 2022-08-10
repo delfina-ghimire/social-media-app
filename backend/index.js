@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -12,8 +13,9 @@ const app = express();
 //Middleware
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
-
+app.use(cors());
 dotenv.config();
+
 const { MONGO_DB, PORT } = process.env;
 mongoose
   .connect(MONGO_DB, {

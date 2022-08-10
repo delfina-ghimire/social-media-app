@@ -1,45 +1,51 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn, signUp } from '../../actions/AuthAction';
 import Logo from '../../img/logo.png';
 import './Auth.css';
 
 const Auth = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.authReducer.loading);
   const [isSignUp, setIsSignUp] = useState(true);
 
+  console.log(loading);
   const [data, setData] = useState({
-    firstname:"",
-    lastname:"",
-    username:"",
-    password:"",
-    confirmpassword:""
-    })
-
-    const[confirmPassword, setConfirmPassword] = useState(true);
-
-    const handleChange=(e)=>{
-      setData({...data, [e.target.name] : e.target.value})
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if(isSignUp){
-         if( data.password !== data.confirmpassword) {
-          setConfirmPassword(false);
-         }
-        }
-    }
-  
-const resetForm=()=>{
-  setConfirmPassword(true);
-  setData({
     firstname: '',
     lastname: '',
     username: '',
     password: '',
     confirmpassword: '',
   });
-}
 
+  const [confirmPassword, setConfirmPassword] = useState(true);
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isSignUp) {
+      data.password === data.confirmpassword
+        ? dispatch(signUp(data))
+        : setConfirmPassword(false);
+    } else {
+      dispatch(logIn(data));
+    }
+  };
+
+  const resetForm = () => {
+    setConfirmPassword(true);
+    setData({
+      firstname: '',
+      lastname: '',
+      username: '',
+      password: '',
+      confirmpassword: '',
+    });
+  };
 
   return (
     <div className='authPage'>
@@ -68,7 +74,7 @@ const resetForm=()=>{
                   className='infoInput'
                   name='firstname'
                   onChange={handleChange}
-                  value = {data.firstname}
+                  value={data.firstname}
                 />
 
                 <input
@@ -144,8 +150,8 @@ const resetForm=()=>{
               </span>
             </div>
 
-            <button className='btn btn--info' type='submit'>
-              {isSignUp ? 'Sign Up' : 'Log In'}
+            <button className='btn btn--info' type='submit' disabled={loading}>
+              {loading ? 'Loading...' : isSignUp ? 'SignUp' : 'Login'}
             </button>
           </form>
         </div>

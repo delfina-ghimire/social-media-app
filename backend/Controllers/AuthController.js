@@ -3,12 +3,12 @@ import UserModel from '../Models/userModel.js';
 
 //New user registration
 export const registerUser = async (req, res) => {
-  const { username, password, firstname, lastname } = req.body;
-
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  req.body.password = hashedPassword;
+  const { username } = req.body;
 
-//   HASHING ON THE SERVER SIDE
+  //   HASHING ON THE SERVER SIDE
   //   Salt is amount of hashing in the given string
 
   //First made salt from bcrypt library with the value of 10. 10 is the amount of how much we want to alter the password by hashing.
@@ -17,14 +17,15 @@ export const registerUser = async (req, res) => {
 
   //pass hashedPassword in the newUserModel instead of password
 
-  const newUser = new UserModel({
-    username,
-    password: hashedPassword,
-    firstname,
-    lastname,
-  });
+  const newUser = new UserModel(req.body);
 
   try {
+    const oldUser = await UserModel.findOne({ username });
+    if (oldUser) {
+      return res
+        .status(400)
+        .json({ message: 'usename is already registered!' });
+    }
     await newUser.save();
     res.status(200).json(newUser);
   } catch (error) {
