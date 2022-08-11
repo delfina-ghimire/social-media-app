@@ -1,14 +1,13 @@
-import React from 'react';
-import PostNav from '../PostNav/PostNav';
 import Posts from '../Posts/Posts';
+import PostShare from '../PostShare/PostShare';
 import './PostSide.css';
 
 const PostSide = () => {
   return (
     <div className='postSide'>
       <div className='postSide__nav'>
-        <PostNav />
-        <Posts/>
+        <PostShare />
+        <Posts />
       </div>
     </div>
   );

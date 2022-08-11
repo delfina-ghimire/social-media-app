@@ -1,6 +1,6 @@
 import { Modal, useMantineTheme } from '@mantine/core';
 import '../../pages/Auth/Auth.css';
-import PostNav from '../PostNav/PostNav';
+import PostNav from '../PostShare/PostShare';
 
 function ShareModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
