@@ -8,7 +8,6 @@ import {
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImage, uploadPost } from '../../actions/uploadAction';
-import ProfileImg from '../../img/profileImg.jpg';
 import './PostShare.css';
 
 const PostShare = () => {
@@ -18,6 +17,7 @@ const PostShare = () => {
   const imageRef = useRef();
   const [image, setImage] = useState(null);
   const desc = useRef();
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   //handle Image Change
   const onImageChange = (event) => {
@@ -61,7 +61,14 @@ const PostShare = () => {
 
   return (
     <div className='PostNav'>
-      <img src={ProfileImg} alt='profile' />
+      <img
+        src={
+          user.profilePicture
+            ? serverPublic + user.profilePicture
+            : serverPublic + 'defaultProfile.png'
+        }
+        alt='profile'
+      />
       <div className='postNav__container'>
         <input
           ref={desc}

@@ -4,6 +4,7 @@ import './App.css';
 import './Index.css';
 import Auth from './pages/Auth/Auth';
 import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   const user = useSelector((state) => state.authReducer.authData);
@@ -26,6 +27,11 @@ function App() {
           path='/auth'
           element={user ? <Navigate to='../Home' /> : <Auth />}
         />
+
+        <Route
+          path='/profile/:id'
+          element={user ? <Profile /> : <Navigate to='../auth' />}
+        ></Route>
       </Routes>
     </div>
   );

@@ -9,7 +9,7 @@ const Profile = () => {
     <div className='profilePage'>
       <ProfileLeft />
       <div className='profilePage__center'>
-        <ProfileCard />
+        <ProfileCard location="profilePage"/>
         <PostSide />
       </div>
       <InfoSide/>
