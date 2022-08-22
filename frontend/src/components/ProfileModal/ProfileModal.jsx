@@ -16,6 +16,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
   const param = useSearchParams();
   const { user } = useSelector((state) => state.authReducer.authData);
 
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -29,38 +30,37 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     }
   };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     let UserData = formData;
-    if(profileImage){
+    if (profileImage) {
       const data = new FormData();
       const fileName = Date.now() + profileImage.name;
-      data.append("name", fileName);
-      data.append("file", profileImage);
+      data.append('name', fileName);
+      data.append('file', profileImage);
       UserData.profilePicture = fileName;
       try {
-        dispatch(uploadImage(data))
+        dispatch(uploadImage(data));
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
 
-    if(coverImage){
+    if (coverImage) {
       const data = new FormData();
       const fileName = Date.now() + coverImage.name;
-      data.append("name", fileName);
-      data.append("file", coverImage);
+      data.append('name', fileName);
+      data.append('file', coverImage);
       UserData.coverPicture = fileName;
       try {
         dispatch(uploadImage(data));
-
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
     dispatch(updateUser(param.id, UserData));
     setModalOpened(false);
-  }
+  };
 
   return (
     <Modal
@@ -147,7 +147,9 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
           <input type='file' name='coverImage' onChange={onImageChange} />
         </div>
 
-        <button className='btn btn--info' onClick={handleSubmit}>Update</button>
+        <button className='btn btn--info' onClick={handleSubmit}>
+          Update
+        </button>
       </form>
     </Modal>
   );

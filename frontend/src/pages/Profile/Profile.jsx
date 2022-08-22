@@ -7,7 +7,6 @@ import './Profile.css';
 
 const Profile = () => {
   const state = useSelector((state) => state);
-  console.log(state);
   return (
     <div className='profilePage'>
       <ProfileLeft />

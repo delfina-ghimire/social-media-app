@@ -11,7 +11,7 @@ import UserRoute from './Routes/UserRoute.js';
 //Routes
 const app = express();
 
-//serve images for public
+//configuration to serve images for public
 app.use(express.static('public'));
 app.use('/images', express.static("images"))
 

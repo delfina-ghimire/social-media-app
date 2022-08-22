@@ -2,8 +2,22 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import UserModel from '../Models/userModel.js';
 
-//get user from database
 
+//get all users
+export const getAllUsers= async(req, res) =>{
+  try {
+    let users = await UserModel.find();
+    users = users.map((user)=>{
+      const {password, ...otherDetails} = user._doc
+      return otherDetails
+    })
+    res.status(200).json(users)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+//get user from database
 export const getUser = async (req, res) => {
   const id = req.params.id;
 
@@ -50,7 +64,7 @@ export const updateUser = async (req, res) => {
           { expiresIn: '1h' }
         );
 
-        res.status(200).json(user, token);
+        res.status(200).json({user, token});
       } catch (error) {
         res.status(500).json(error);
       }

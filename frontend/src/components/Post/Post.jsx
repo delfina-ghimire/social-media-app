@@ -8,6 +8,7 @@ import Share from '../../img/share.png';
 import './Post.css';
 
 const Post = ({ data }) => {
+  
   const { user } = useSelector((state) => state.authReducer.authData);
   const [liked, setLiked] = useState(data.likes.includes(user._id));
   const [likes, setLikes] = useState(data.likes.length);
@@ -17,12 +18,13 @@ const Post = ({ data }) => {
     likePost(data._id, user._id);
     liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
   };
-
   return (
     <div className='post'>
       <img
         className='post__image'
-        src={data.img ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ' '}
+        src={
+          data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ' '
+        }
         alt='post data'
       />
 

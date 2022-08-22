@@ -18,70 +18,70 @@ const InfoCard = () => {
 
   const { user } = useSelector((state) => state.authReducer.authData);
 
-  useEffect(() => {
-    const fetchProfileUser = async () => {
-      if (profileUserId === user._id) {
-        setProfileUser(user);
-      } else {
-        const profileUser = await UserApi.getUser(profileUserId);
-        setProfileUser(profileUser);
-      }
-    };
-    fetchProfileUser();
-  }, [user]);
-
-  const handleLogout = () => {
-    dispatch(logOut());
+useEffect(() => {
+  const fetchProfileUser = async () => {
+    if (profileUserId === user._id) {
+      setProfileUser(user);
+    } else {
+      const profileUser = await UserApi.getUser(profileUserId);
+      setProfileUser(profileUser);
+    }
   };
+  fetchProfileUser();
+}, [user]);
 
-  return (
-    <div className='infoCard'>
-      <div className='infoCard__head'>
-        <h2>Profile Info</h2>
-        {user._id === profileUserId ? (
-          <div className='infoCard__icon'>
-            <UilPen
-              width='2rem'
-              height='2rem'
-              onClick={() => setModalOpened(true)}
-            />
-            <ProfileModal
-              modalOpened={modalOpened}
-              setModalOpened={setModalOpened}
-              data = {user}
-            />
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
+const handleLogout = () => {
+  dispatch(logOut());
+};
 
-      <div className='InfoCard__info'>
-        <span>
-          <b>Lives in </b>
-        </span>
-        <span>Kathmandu</span>
-      </div>
-
-      <div className='InfoCard__info'>
-        <span>
-          <b>Relationship Status </b>
-        </span>
-        <span>{profileUser.relationship}</span>
-      </div>
-
-      <div className='InfoCard__info'>
-        <span>
-          <b>{profileUser.livesIn} </b>
-        </span>
-        <span>{profileUser.worksAt}</span>
-      </div>
-
-      <button className='btn btn--logout' onClick={handleLogout}>
-        Logout
-      </button>
+return (
+  <div className='infoCard'>
+    <div className='infoCard__head'>
+      <h2>Profile Info</h2>
+      {user._id === profileUserId ? (
+        <div className='infoCard__icon'>
+          <UilPen
+            width='2rem'
+            height='2rem'
+            onClick={() => setModalOpened(true)}
+          />
+          <ProfileModal
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+            data={user}
+          />
+        </div>
+      ) : (
+        ''
+      )}
     </div>
-  );
+
+    <div className='InfoCard__info'>
+      <span>
+        <b>Lives in </b>
+      </span>
+      <span>{profileUser.livesIn}</span>
+    </div>
+
+    <div className='InfoCard__info'>
+      <span>
+        <b>Relationship Status </b>
+      </span>
+      <span>{profileUser.relationship}</span>
+    </div>
+
+    <div className='InfoCard__info'>
+      <span>
+        <b>Works At </b>
+      </span>
+      <span>{profileUser.worksAt}</span>
+    </div>
+
+    <button className='btn btn--logout' onClick={handleLogout}>
+      Logout
+    </button>
+  </div>
+);
 };
 
 export default InfoCard;

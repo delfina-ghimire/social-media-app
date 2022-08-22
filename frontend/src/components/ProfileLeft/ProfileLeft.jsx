@@ -6,7 +6,6 @@ import './ProfileLeft.css';
 
 const ProfileLeft = () => {
   const state = useSelector((state) => state);
-  console.log('profileLeft', state);
   return (
     <div className='profileLeft'>
       <LogoSearch />
