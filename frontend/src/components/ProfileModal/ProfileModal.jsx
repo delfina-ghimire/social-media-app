@@ -2,7 +2,7 @@ import { Modal, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { uploadImage } from '../../actions/uploadAction';
+import { uploadImage } from '../../actions/UploadAction';
 import { updateUser } from '../../actions/UserAction';
 import '../../pages/Auth/Auth.css';
 

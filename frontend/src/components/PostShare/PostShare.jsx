@@ -7,7 +7,7 @@ import {
 } from '@iconscout/react-unicons';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage, uploadPost } from '../../actions/uploadAction';
+import { uploadImage, uploadPost } from '../../actions/UploadAction';
 import './PostShare.css';
 
 const PostShare = () => {
