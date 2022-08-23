@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(106.23deg, #4adede, #787ff6 180%);
+   background-image: linear-gradient(to left bottom, #257af9, #2c62e0, #304ac7, #3232ad, #311693);
     /* background: linear-gradient(106.23deg, #f99827); */
     border-radius: 5px;
     padding: 4px;

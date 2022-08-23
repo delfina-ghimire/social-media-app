@@ -86,7 +86,15 @@
 
 .profileCard > span{
     font-weight: bold;
-    color: #787ff6;
+    
+    background-image: var(--buttonBg);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    --webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
     align-self: center;
     margin-bottom: 1rem;
     cursor: pointer;
