@@ -4,13 +4,12 @@ import './ProfileCard.css';
 
 const ProfileCard = ({ location }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
-  
-
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
   //extracting posts
-  const posts = useSelector((state)=>state.postReducer.posts)
+  const posts = useSelector((state) => state.postReducer.posts);
 
   return (
+    // Profile and cover Images
     <div className='profileCard'>
       <div className='profileImgs'>
         <img
@@ -19,7 +18,6 @@ const ProfileCard = ({ location }) => {
               ? serverPublic + user.coverPicture
               : serverPublic + 'defaultCover.jpg'
           }
-          v
           alt='cover photo'
           className='coverImg'
         />
@@ -34,6 +32,7 @@ const ProfileCard = ({ location }) => {
         />
       </div>
 
+      {/* Name */}
       <div className='profileName'>
         <span>
           {' '}
@@ -41,10 +40,10 @@ const ProfileCard = ({ location }) => {
         </span>
         <span>{user.worksAt ? user.worksAt : 'Write about yourself'}</span>
       </div>
-
       <div className='followStatus'>
         <hr />
         <div>
+          {/* No of followers */}
           <div className='follow'>
             <span>{user.followers.length}</span>
             <span>Followers</span>
@@ -52,14 +51,17 @@ const ProfileCard = ({ location }) => {
           <div className='vl'></div>
           <div className='follow'>
             <span>{user.following.length}</span>
-            <span>Followings</span>
+            <span>Following</span>
           </div>
 
           {location === 'profilePage' && (
             <>
               <div className='vl'></div>
               <div className='follow'>
-                <span> {posts.filter((post) => post.userId === user._id).length} </span>
+                <span>
+                  {' '}
+                  {posts.filter((post) => post.userId === user._id).length}{' '}
+                </span>
                 Posts
               </div>
             </>
@@ -67,7 +69,6 @@ const ProfileCard = ({ location }) => {
         </div>
         <hr />
       </div>
-
       {location === 'profilePage' ? (
         ''
       ) : (

@@ -84,7 +84,6 @@ export const likePost = async (req, res) => {
 
 //Get Timeline Posts
 export const getTimelinePosts = async (req, res) => {
-  console.log('Timeline Post');
   const userId = req.params.id;
 
   try {

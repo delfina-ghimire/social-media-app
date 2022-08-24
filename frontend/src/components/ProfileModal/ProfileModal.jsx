@@ -1,9 +1,10 @@
 import { Modal, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { uploadImage } from '../../actions/UploadAction';
 import { updateUser } from '../../actions/UserAction';
+
 import '../../pages/Auth/Auth.css';
 
 function ProfileModal({ modalOpened, setModalOpened, data }) {
@@ -13,16 +14,15 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
   const [profileImage, setProfileImage] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
   const dispatch = useDispatch();
-  const param = useSearchParams();
+  const param = useParams();
+
   const { user } = useSelector((state) => state.authReducer.authData);
-
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onImageChange = (event) => {
-    if (event.target.files && event.target.file[0]) {
+    if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       event.target.name === 'profileImage'
         ? setProfileImage(img)
@@ -103,7 +103,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
             type='text'
             className='infoInput'
             name='worksAt'
-            placeholder='Works at'
+            placeholder='Bio'
             onChange={handleChange}
             value={formData.worksAt}
           />
@@ -154,5 +154,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     </Modal>
   );
 }
+
+
 
 export default ProfileModal;

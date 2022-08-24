@@ -24,7 +24,7 @@ useEffect(() => {
       setProfileUser(user);
     } else {
       const profileUser = await UserApi.getUser(profileUserId);
-      setProfileUser(profileUser);
+      setProfileUser(profileUser);     
     }
   };
   fetchProfileUser();

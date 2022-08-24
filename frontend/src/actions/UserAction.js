@@ -9,3 +9,4 @@ export const updateUser = (id, formData) => async (dispatch) => {
     dispatch({ type: 'UPDATING_FAIL' });
   }
 };
+

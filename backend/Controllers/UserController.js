@@ -4,23 +4,22 @@ import UserModel from '../Models/userModel.js';
 
 
 //get all users
-export const getAllUsers= async(req, res) =>{
+export const getAllUsers = async (req, res) => {
   try {
     let users = await UserModel.find();
-      users = users.map((user) => {
-        const { password, ...otherDetails } = user._doc;
-        return otherDetails;
-      });
-    res.status(200).json(users)
+    users = users.map((user) => {
+      const { password, ...otherDetails } = user._doc;
+      return otherDetails;
+    });
+    res.status(200).json(users);
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
-}
+};
 
 //get user from database
 export const getUser = async (req, res) => {
   const id = req.params.id;
-
   try {
     //1. find user
     const user = await UserModel.findById(id);
@@ -38,13 +37,11 @@ export const getUser = async (req, res) => {
 };
 
 //Update a user
-
 export const updateUser = async (req, res) => {
   //fetch id from the parameter
   const id = req.params.id;
-
   //fetch data from request body
-  const { _id, currentUserId, currentUserAdminStatus, password } = req.body;
+  const { _id, currentUserAdminStatus, password } = req.body;
 
   if (id === _id) {
     {
@@ -64,13 +61,13 @@ export const updateUser = async (req, res) => {
           { expiresIn: '1h' }
         );
 
-        res.status(200).json({user, token});
+        res.status(200).json({ user, token });
       } catch (error) {
         res.status(500).json(error);
       }
     }
   } else {
-    res.status(403).json('Acess Denied! You can only update your own profile');
+    res.status(403).json('Access Denied! You can only update your own profile');
   }
 };
 
