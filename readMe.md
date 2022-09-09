@@ -1,19 +1,19 @@
 <h1 align=center>
-<img src="./frontend/src/img/app-preview.png" />
+<img src="./frontend/src/img/header-preview.png"/>
 </h1>
 
 <div align="center">
 
-![License](https://img.shields.io/apm/l/open) 
+![Mongoose](https://img.shields.io/badge/Mongoose-%5E6.5.1-orange) 
 ![Node_Badge](https://img.shields.io/badge/npm-8.8.0-red)
 ![Npm_Badge](https://img.shields.io/badge/node-18.1.0-green)
 ![React Badge](https://img.shields.io/badge/react-%5E18.2.0-blue)
 ![React_DOM](https://img.shields.io/badge/reactDOM-%5E18.2.0-9cf)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.1-blueviolet)
-![Made by delfina](https://img.shields.io/badge/MadeBy-delfina-brightgreen)
+![Express](https://img.shields.io/badge/Express-%22%5E4.18.1-lightgrey)
+![MERN app](https://img.shields.io/badge/Stack-MERN-yellowgreen)
 </div>
 
-# SandBox NFT Marketplace
+# FriendsBook : Social Medial Platform
 ## Index
 
 - [About](#about)
@@ -133,7 +133,7 @@ Install dependencies
 
 ```bash
   social-media-app/frontend
-  npm install
+  yarn install
 
   social-media-app/backend
   npm install
