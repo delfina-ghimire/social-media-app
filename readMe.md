@@ -13,7 +13,7 @@
 ![MERN app](https://img.shields.io/badge/Stack-MERN-yellowgreen)
 </div>
 
-# FriendsBook : Social Medial Platform
+# FriendsBook : Social Media Platform
 ## Index
 
 - [About](#about)
@@ -83,20 +83,6 @@ This project was developed using the following technologies:
   - [Mongoose](https://mongoosejs.com/)
   
 
-
-
-<a id='preview'/>
-
-## :framed_picture: Preview
-
-Check out how it looks:
-
-![App Screenshot](./frontend/src/img/app-preview.png)
-
-![Signup page Screenshot](./frontend/src/img/signup-preview.png)
-
-![Login Page Screenshot](./frontend//src/img/login-preview.png)
-
 <a id='features'/>
 
 ## :fire: Salient Features
@@ -111,6 +97,18 @@ Check out how it looks:
 - Proper file and folder architecture 
 - Fully Responsive along all devices 
 - Cross platform
+
+<a id='preview'/>
+
+## :framed_picture: Preview
+
+Check out how it looks:
+
+![App Screenshot](./frontend/src/img/app-preview.png)
+
+![Signup page Screenshot](./frontend/src/img/signup-preview.png)
+
+![Login Page Screenshot](./frontend//src/img/login-preview.png)
 
 
 <a id='local'/>
