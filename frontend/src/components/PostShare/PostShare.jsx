@@ -4,11 +4,12 @@ import {
   UilScenery,
   UilSchedule,
   UilTimes,
-} from '@iconscout/react-unicons';
-import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage, uploadPost } from '../../actions/UploadAction';
-import './PostShare.css';
+} from "@iconscout/react-unicons";
+import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { uploadImage, uploadPost } from "../../actions/UploadAction";
+import { REACT_APP_PUBLIC_FOLDER } from "../../constants";
+import "./PostShare.css";
 
 const PostShare = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const PostShare = () => {
   const imageRef = useRef();
   const [image, setImage] = useState(null);
   const desc = useRef();
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+  const serverPublic = REACT_APP_PUBLIC_FOLDER;
 
   //handle Image Change
   const onImageChange = (event) => {
@@ -29,7 +30,7 @@ const PostShare = () => {
 
   const reset = () => {
     setImage(null);
-    desc.current.value = '';
+    desc.current.value = "";
   };
 
   //handle post upload
@@ -44,8 +45,8 @@ const PostShare = () => {
     if (image) {
       const data = new FormData();
       const filename = Date.now() + image.name;
-      data.append('name', filename);
-      data.append('file', image);
+      data.append("name", filename);
+      data.append("file", image);
       newPost.image = filename;
       console.log(newPost);
 
@@ -60,64 +61,64 @@ const PostShare = () => {
   };
 
   return (
-    <div className='PostNav'>
+    <div className="PostNav">
       <img
         src={
           user.coverPicture
             ? serverPublic + user.profilePicture
-            : serverPublic + 'defaultProfile.png'
+            : serverPublic + "defaultProfile.png"
         }
-        alt='profile'
+        alt="profile"
       />
-      <div className='postNav__container'>
+      <div className="postNav__container">
         <input
           ref={desc}
           required
-          className='postInput__input'
-          type='text'
+          className="postInput__input"
+          type="text"
           placeholder="What's in your mind?"
         />
-        <div className='postOptions'>
+        <div className="postOptions">
           <div
-            className='postOptions__option'
-            style={{ color: 'var(--photo)' }}
+            className="postOptions__option"
+            style={{ color: "var(--photo)" }}
             onClick={() => imageRef.current.click()}
           >
             <UilScenery />
             Photo
           </div>
           <div
-            className='postOptions__option'
-            style={{ color: 'var(--video)' }}
+            className="postOptions__option"
+            style={{ color: "var(--video)" }}
           >
             <UilPlayCircle />
             Video
           </div>
           <div
-            className='postOptions__option'
-            style={{ color: 'var(--location)' }}
+            className="postOptions__option"
+            style={{ color: "var(--location)" }}
           >
             <UilLocationPoint />
             Location
           </div>
           <div
-            className='postOptions__option'
-            style={{ color: 'var(--shedule)' }}
+            className="postOptions__option"
+            style={{ color: "var(--shedule)" }}
           >
             <UilSchedule />
             Schedule
           </div>
           <button
-            className='btn btn--postShare'
+            className="btn btn--postShare"
             onClick={handleSubmit}
             disabled={loading}
           >
-            {loading ? 'Uploading...' : 'Share'}
+            {loading ? "Uploading..." : "Share"}
           </button>
-          <div style={{ display: 'none' }}>
+          <div style={{ display: "none" }}>
             <input
-              type='file'
-              name='myImage'
+              type="file"
+              name="myImage"
               ref={imageRef}
               onChange={onImageChange}
             />
@@ -125,15 +126,15 @@ const PostShare = () => {
         </div>
 
         {image && (
-          <div className='previewImg__container'>
+          <div className="previewImg__container">
             <UilTimes
-              className='previewImg__icon'
+              className="previewImg__icon"
               onClick={() => setImage(null)}
             />
             <img
-              className='previewImg'
+              className="previewImg"
               src={URL.createObjectURL(image)}
-              alt=''
+              alt=""
             />
           </div>
         )}
