@@ -104,7 +104,7 @@ This project was developed using the following technologies:
 
 Check out how it looks:
 
-![App Screenshot](.src/konva.png)
+![App Screenshot](./frontend/src/img/signin-preview.png)
 
 ![Signup page Screenshot](./frontend/src/img/signup-preview.png)
 
