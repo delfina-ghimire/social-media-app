@@ -67,20 +67,24 @@ This project was developed using the following technologies:
   - [ReactDOM](https://reactjs.org/docs/react-dom.html)
   - [Redux](https://react-redux.js.org/)
   - [Redux Thunk](https://redux.js.org/usage/writing-logic-thunks)
+  - [IconScout](https://iconscout.com/)
+  - [Mantine](https://mantine.dev/)
+  - [React Redux]()
+  
+
 
 
   ### **Backend** <sub><sup>mongodb+express+node</sup></sub>
+- [bcrypt](https://www.npmjs.com/package/bcrypt): A library for hashing and comparing passwords.
+- [body-parser](https://www.npmjs.com/package/body-parser): Middleware for parsing incoming request bodies.
+- [cors](https://www.npmjs.com/package/cors): Middleware for enabling Cross-Origin Resource Sharing.
+- [dotenv](https://www.npmjs.com/package/dotenv): Library for loading environment variables from a .env file.
+- [express](https://expressjs.com/): Web application framework for Node.js.
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): Library for generating and verifying JSON Web Tokens (JWT).
+- [mongoose](https://mongoosejs.com/): MongoDB object modeling tool for Node.js.
+- [multer](https://www.npmjs.com/package/multer): Middleware for handling file uploads.
+- [nodemon](https://www.npmjs.com/package/nodemon): Development tool for automatically restarting the Node.js application.
 
-  - [Mongodb](https://www.mongodb.com/)
-  - [Express](https://expressjs.com/)
-  - [Node](https://nodejs.org/en/)
-  - [Bcrypt](https://www.npmjs.com/package/bcrypt)
-  - [Body Parser](https://www.npmjs.com/package/body-parser)
-  - [Cors](https://www.npmjs.com/package/cors)
-  - [dotenv](https://www.npmjs.com/package/dotenv)
-  - [Nodemon](https://www.npmjs.com/package/nodemon)
-  - [Multer](https://www.npmjs.com/package/multer)
-  - [Mongoose](https://mongoosejs.com/)
   
 
 <a id='features'/>
